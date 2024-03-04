@@ -1,11 +1,23 @@
-// IIFE
-const ReproductorModule = (function () {
-    //funcion insertar
+// Construccion patron modulo
+let iife = (function() {
+    // Función privada para insertar el video en el documento HTML
+    // CReo 2 Funciones, publico y otra privada (sumanumero, es un Obj.)
     function insertarElemento(url, id) {
-      const iframe = document.createElement("iframe");
-      iframe.setAttribute("src", url);
-      document.getElementById(id).appendChild(iframe);
+        const iframe = document.createElement("iframe");
+        iframe.setAttribute("src", url);
+        document.getElementById(id).appendChild(iframe);
     }
+    // Función pública para insertar el video con parámetros (url, id)
+    // Retorno de las funciones públicas
+    return {
+        insertarElemento: (url, id) => insertarElemento(url, id)
+          }
+}) ();
+//Llamado al método público de la función iife
+// iife retorna un Objeto
+console.log("Valor de iife: ", iife)
+iife.insertarElemento(4,2);
+
   
     // Clase padre 
     class Multimedia {
@@ -19,7 +31,7 @@ const ReproductorModule = (function () {
   
         // cambio en la url del video
         this.setInicio = function () {
-          return "Este método es para realizar un cambio en la URL del video";
+          return "cambio en la URL del video";
         };
       }
     }
@@ -48,7 +60,7 @@ const ReproductorModule = (function () {
     return {
       Reproductor: Reproductor,
     };
-  })();
+ 
   
   // Instancia clase hija para música
   const reproductorMusica = new Reproductor(
@@ -59,19 +71,13 @@ const ReproductorModule = (function () {
   reproductorMusica.playMultimedia();
   
   // Instancia clase hija para película
-  const reproductorPelicula = new Reproductor(
-    "https://www.youtube.com/embed/5PSNL1qE6VY",
-    "peliculas"
-  );
+  const reproductorPelicula = new Reproductor("https://www.youtube.com/embed/5PSNL1qE6VY","peliculas");
   reproductorPelicula.playMultimedia();
 
   
   
   // Instancia clase hija para serie
-  const reproductorSerie = new Reproductor(
-    "",
-    "series"
-  );
+  const reproductorSerie = new Reproductor("","series");
   reproductorSerie.playMultimedia();
   
   //  tiempo de inicio para instancia
