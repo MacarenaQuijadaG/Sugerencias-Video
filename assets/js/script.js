@@ -60,7 +60,7 @@
 // PUNTO 4
     //instancia de la clase
     const idMusica = document.getElementById("musica");
-    let musica = new Reproductor("https://www.youtube.com/embed/Waf6bK-xnBk?si=EMGQn6eiF84s47Kc",idMusica);
+    let musica = new Reproductor("https://www.youtube.com/embed/0lDvyER0E6Y?si=QNdOm3fQxnLP2Rlu",idMusica);
     musica.playMultimedia();
 
     const idPelicula = document.getElementById("peliculas");
@@ -73,4 +73,6 @@
     serie.playMultimedia();
 
 
-    
+    // url de musica 
+
+    //https://www.youtube.com/embed/0lDvyER0E6Y?si=QNdOm3fQxnLP2Rlu
