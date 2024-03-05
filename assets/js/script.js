@@ -20,29 +20,23 @@
 
 //PUNTO 2
     // Clase padre 
-    class Multimedia {
-        constructor(url) {
-        this._url = url;
-
-        }
-
-//PUNTO 2 * CLOSURES
-    
-        //Getter
-        get url() {
-            return this._url;
-        }
-
-        // Setter
-        set url(newUrl) {
-            this._url = newUrl;
-        }
-
-      // cambio en la url del video
-      setInicio() {
-        return "cambio en la URL del video";
+    const Multimedia = (() => {
+      //CLOSURES
+      let url;
+      class Multimedia {
+          constructor(_url) {
+              url = _url;
+          }
+          get _url() {
+              return url;
+          }
+          setInicio(tiempo) {
+              url = `${this._url}?start=${tiempo}`;
+              return "Este método es para realizar un cambio en la URL del video";
+          }
       }
-}
+      return Multimedia;
+     })();
 // PUNTO 3
   // Clase hija 
   class Reproductor extends Multimedia {
@@ -50,32 +44,23 @@
       super(url);
       this.id = id;
     }
-
-        // Getter
-        get id() {
-            return this._id;
-        }
-
-        // Setter
-        set id(id) {
-            this._id = id;
-        }
+  
  // PUNTO 5
     // reproducir multimedia
     playMultimedia() {
-        iife.publica(this.url, this.id)
+        iife.publica(this._url, this.id)
     }
  //PUNTO 6
     // modificar el tiempo de inicio url
     setInicio(tiempo) {
-      this.id.setAttribute("src", `${this.url}?start=${tiempo}`);
+      this.id.setAttribute("src", `${this._url}?start=${tiempo}`);
     }
   }
 
 // PUNTO 4
     //instancia de la clase
     const idMusica = document.getElementById("musica");
-    let musica = new Reproductor("",idMusica);
+    let musica = new Reproductor("https://www.youtube.com/embed/p1JmzB6E-C8?si=WuEMjw1ypE7o2TaF",idMusica);
     musica.playMultimedia();
 
     const idPelicula = document.getElementById("peliculas");
@@ -84,5 +69,8 @@
     pelicula.setInicio(20);
 
     const idSerie = document.getElementById("series");
-    let serie = new Reproductor("",idSerie);
+    let serie = new Reproductor("https://www.youtube.com/embed/ymsrEDXe97o?si=vbS-d-F9n__pq9Nc",idSerie);
     serie.playMultimedia();
+
+
+    
