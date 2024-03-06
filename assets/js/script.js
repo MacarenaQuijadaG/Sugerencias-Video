@@ -13,17 +13,15 @@ let iife = (function () {
     publica: (url, id) => privada(url, id)
   }
 })();
-//Llamado al método público de la función iife
-// iife retorna un Objeto
-//console.log("Valor de iife: ", iife);
-//iife.insertarElemento(4,2);
 
 //PUNTO 2
 // Clase padre 
 const Multimedia = (() => {
   //CLOSURES
+  //se crea variable que se le pasará el closure
   let url;
   class Multimedia {
+    //constructor de la clase con un parámetro
     constructor(_url) {
       url = _url;
     }
@@ -37,10 +35,12 @@ const Multimedia = (() => {
   }
   return Multimedia;
 })();
+
 // PUNTO 3
-// Clase hija 
+// Clase hija de Multimedia
 class Reproductor extends Multimedia {
   constructor(url, id) {
+    //hereda del padre el url
     super(url);
     this.id = id;
   }
@@ -59,20 +59,20 @@ class Reproductor extends Multimedia {
 
 // PUNTO 4
 //instancia de la clase
+//musica
 const idMusica = document.getElementById("musica");
 let musica = new Reproductor("https://www.youtube.com/embed/jfKfPfyJRdk?si=tYnUYAA0QZf_cxtu", idMusica);
 musica.playMultimedia();
 
+//pelicula
 const idPelicula = document.getElementById("peliculas");
 let pelicula = new Reproductor("https://www.youtube.com/embed/5PSNL1qE6VY", idPelicula);
 pelicula.playMultimedia();
+//llama al método de la función de la clase padre playMultimedia
 pelicula.setInicio(20);
+// se inicia la película en el segundo 20
 
+//serie
 const idSerie = document.getElementById("series");
 let serie = new Reproductor("https://www.youtube.com/embed/ymsrEDXe97o?si=vbS-d-F9n__pq9Nc", idSerie);
 serie.playMultimedia();
-
-
-// url de musica
-
-//https://www.youtube.com/embed/0lDvyER0E6Y?si=QNdOm3fQxnLP2Rlu
