@@ -47,4 +47,3 @@ Instrucciones y ejemplos para ejecutar el conjunto de pruebas.
 - **Andrea Rosero** -[andreaendigital](https://github.com/andreaendigital)
 ---
 
-⌨️ con ❤️ por [Macarena Quijada G](https://github.com/MacarenaQuijadaG) 😊
